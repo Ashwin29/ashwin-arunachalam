@@ -1,0 +1,36 @@
+.error-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  text-align: center;
+  background-color: transparent;
+  color: var(--text-primary);
+  padding: 2rem;
+  box-sizing: border-box;
+
+  /* Adjust padding for small screens */
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+}
+
+.error-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.error-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.error-message {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  color: var(--text-secondary);
+}
+
+/* Button styling is inherited from the Button component */

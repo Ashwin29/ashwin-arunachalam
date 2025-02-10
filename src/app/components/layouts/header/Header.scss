@@ -1,0 +1,116 @@
+/* Header styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  transition: background-color 0.3s ease;
+
+  /* No background for desktop */
+  background: transparent;
+
+  .logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+
+    a {
+      text-decoration: none;
+      font-size: 1rem;
+      color: var(--text-primary);
+      transition: color 0.3s;
+
+      &:hover,
+      &:focus {
+        color: var(--accent);
+        outline: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      display: none; /* Hide navigation on smaller screens */
+    }
+  }
+
+  .menu-toggle {
+    display: none; /* Hidden in desktop mode */
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: var(--accent);
+      outline: none;
+    }
+
+    @media (max-width: 768px) {
+      display: block; /* Show toggle on smaller screens */
+    }
+  }
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 80%; /* Drawer width */
+  background: var(
+    --backgrounds-card
+  ); /* Background based on design guidelines */
+  box-shadow: var(--shared-shadow);
+  z-index: 2000;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.3s ease-in-out;
+  overflow-y: auto;
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    a {
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:hover,
+      &:focus {
+        color: var(--accent);
+        outline: none;
+      }
+    }
+  }
+
+  .menu-close {
+    font-size: 1.5rem;
+    align-self: flex-end;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: var(--accent);
+    }
+  }
+}

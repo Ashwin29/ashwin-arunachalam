@@ -1,0 +1,45 @@
+.moon {
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(
+    circle,
+    #ffffff 60%,
+    #f0e7d3 80%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  position: absolute;
+  top: 8%;
+  right: 5%;
+  box-shadow: 0 0 40px 15px rgba(255, 255, 200, 0.3),
+    0 10px 10px rgba(0, 0, 0, 0.4);
+  animation: subtlePulsate 8s infinite ease-in-out;
+  transform: translateY(-10px) scale(0.9); /* Start slightly above */
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+  pointer-events: none; /* Ensures it doesn't interfere when hidden */
+}
+
+.moon.fade-in {
+  opacity: 1;
+  transform: translateY(0) scale(1); /* Smooth transition */
+}
+
+.moon.fade-out {
+  opacity: 0;
+  transform: translateY(10px) scale(0.9); /* Moves down while fading */
+}
+
+@keyframes subtlePulsate {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 40px 15px rgba(255, 255, 200, 0.3),
+      0 10px 10px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px 20px rgba(255, 255, 200, 0.4),
+      0 15px 15px rgba(0, 0, 0, 0.5);
+  }
+}

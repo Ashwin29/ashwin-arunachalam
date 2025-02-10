@@ -1,0 +1,57 @@
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: var(--backgrounds-muted); /* Matches theme background */
+  border-radius: 8px; /* Rounded corners for the image container */
+  transition: background-color 0.3s ease;
+
+  &.dark {
+    background: var(--backgrounds-base); /* Dark mode background */
+  }
+
+  .image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: opacity 0.3s ease;
+
+    &.hidden {
+      opacity: 0;
+    }
+  }
+
+  .image-skeleton {
+    width: 100%;
+    height: 100%;
+    background: var(--shared-disabled); /* Muted color for loader */
+    animation: skeleton-loading 1.5s infinite ease-in-out;
+    border-radius: 8px;
+  }
+
+  .image-error {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 1rem;
+  }
+}
+
+/* Skeleton Loading Animation */
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--backgrounds-muted);
+  }
+  50% {
+    background-color: var(--shared-disabled);
+  }
+  100% {
+    background-color: var(--backgrounds-muted);
+  }
+}

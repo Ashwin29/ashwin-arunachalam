@@ -1,0 +1,88 @@
+.button {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  display: inline-block;
+  position: relative;
+
+  /* Primary Button Styles */
+  &.button-primary {
+    background-color: var(--primary);
+    color: var(--text-primary);
+    border: none;
+    box-shadow: 0px 4px 6px var(--shared-shadow);
+
+    &:hover {
+      background-color: var(--hover);
+    }
+
+    &:focus {
+      outline: 2px solid var(--shared-focus);
+      outline-offset: 2px;
+    }
+
+    &:disabled {
+      background-color: var(--shared-disabled);
+      color: var(--text-muted);
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+
+  /* Secondary Button Styles */
+  &.button-secondary {
+    background-color: var(--secondary);
+    color: var(--text-secondary);
+    border: none;
+    box-shadow: 0px 2px 4px var(--shared-shadow);
+
+    &:hover {
+      background-color: var(--hover);
+    }
+
+    &:focus {
+      outline: 2px solid var(--shared-focus);
+      outline-offset: 2px;
+    }
+
+    &:disabled {
+      background-color: var(--shared-disabled);
+      color: var(--text-muted);
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+
+  /* Outlined Button Styles */
+  &.button-outlined {
+    background-color: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+
+    &:hover {
+      background-color: var(--hover);
+      color: var(--text-primary);
+    }
+
+    &:focus {
+      outline: 2px solid var(--shared-focus);
+      outline-offset: 2px;
+    }
+
+    &:disabled {
+      border-color: var(--shared-disabled);
+      color: var(--text-muted);
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+
+  /* Add subtle glow for focus states in dark mode */
+  &:focus-visible {
+    box-shadow: 0px 0px 10px 2px var(--shared-focus);
+  }
+}

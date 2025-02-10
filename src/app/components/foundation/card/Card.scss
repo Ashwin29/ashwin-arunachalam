@@ -1,0 +1,67 @@
+.card {
+  background: var(--backgrounds-card); /* Dynamic based on light/dark mode */
+  border-radius: 12px; /* Medium-rounded corners */
+  padding: 16px;
+  box-shadow: var(--shadow); /* Subtle depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; /* Ensures content stays within bounds */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 320px;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow); /* Interactive hover depth */
+  }
+
+  &:focus-within {
+    outline: 2px solid var(--focus); /* Accessible focus state */
+    outline-offset: 4px;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 180px;
+    border-radius: 8px;
+    object-fit: cover; /* Maintains aspect ratio */
+    margin-bottom: 12px;
+  }
+
+  .card-content {
+    text-align: left;
+
+    .card-title {
+      margin-bottom: 0.5rem;
+    }
+
+    .card-description {
+      margin-bottom: 1rem;
+      line-height: 1.6; // Improve readability
+    }
+
+    .card-action {
+      background-color: var(--color-accent, #ffd700); /* Use the accent color */
+      color: var(
+        --color-text-primary,
+        #232323
+      ); /* Ensure text contrasts with the background */
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.25rem;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+
+      &:hover {
+        background-color: var(--color-accent-hover, #ffc700);
+      }
+
+      &:focus {
+        outline: 2px solid var(--color-focus, #3b82f6);
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+.typewriter-wrapper {
+  display: inline-block;
+  font-family: 'Monospace', sans-serif;
+  font-size: 2.5rem;
+  white-space: normal; /* Allow wrapping */
+  overflow-wrap: break-word; /* Ensure words wrap properly */
+  color: var(--text-primary);
+  animation: fade-in 0.3s ease-in-out;
+  max-width: 100%; /* Prevent overflow */
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+  }
+}
+
+.typewriter-text {
+  display: inline-block;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  line-height: 1.4;
+  position: relative;
+}
+
+.typewriter-caret {
+  display: inline-block;
+  position: absolute;
+  width: 2px;
+  height: 1.2em;
+  background-color: var(--accent);
+  animation: blink 0.5s step-end infinite;
+  vertical-align: bottom;
+}
+
+/* Caret Animation */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Fade-in animation for the wrapper */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

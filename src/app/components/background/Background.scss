@@ -1,0 +1,43 @@
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+
+  /* Primary Background (Active Theme) */
+  background: var(--backgrounds-base);
+  transition: background 1s ease-in-out; /* Smooth transition */
+
+  /* Gradient Transition Layer */
+  .background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--backgrounds-base);
+    transition: opacity 1s ease-in-out, background 1s ease-in-out;
+    opacity: 1;
+  }
+
+  /* Class to trigger fade */
+  &.fade-out .background-overlay {
+    opacity: 0; /* Previous background fades out */
+  }
+
+  /* Add subtle noise/texture for realism */
+  .bg-noise {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/textures/high_quality_noise.png'); /* A subtle noise texture */
+    opacity: 0.01; /* Adjust for subtle effect */
+    pointer-events: none;
+  }
+}

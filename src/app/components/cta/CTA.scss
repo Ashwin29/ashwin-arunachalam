@@ -1,0 +1,69 @@
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem; /* Maintain spacing */
+  flex-wrap: wrap; /* Ensures proper responsiveness */
+  width: 100%; /* Ensures it doesn't get affected by text expansion */
+  max-width: 400px; /* Prevents excessive width */
+  margin: 0 auto; /* Center it */
+}
+
+.cta-button {
+  font-size: 1rem; /* Adjusted for better readability */
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.1s ease, background-color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+  outline: none;
+  display: flex; /* Ensures proper alignment */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  user-select: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  min-width: 160px; /* Prevents shrinking */
+  max-width: 200px; /* Restricts growth */
+  flex-shrink: 0; /* Ensures it stays the same size */
+  margin: 0 auto; /* Center horizontally */
+
+  /* Uses dynamic variables from applyTheme */
+  background: var(--primary);
+  color: var(--text-primary);
+  border: none;
+
+  &.secondary {
+    background: transparent;
+    border: 2px solid var(--text-secondary);
+    color: var(--text-secondary);
+  }
+
+  &.ghost {
+    background: none;
+    border-bottom: 2px solid var(--text-primary);
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 768px) {
+    width: 80%; /* Reduce further for mobile */
+    max-width: 180px;
+    padding: 8px 16px;
+  }
+}
+
+.cta-button:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:active,
+.pressed {
+  transform: scale(0.95);
+}
+
+/* Accessibility Focus */
+.cta-button:focus {
+  outline: 3px solid rgba(135, 178, 255, 0.8);
+  outline-offset: 3px;
+}

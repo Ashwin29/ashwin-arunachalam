@@ -1,0 +1,39 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0; /* Ensures the footer doesn't shrink */
+  padding: 1rem 2rem;
+  background: transparent; /* Transparent background like the header */
+  color: var(--text-primary);
+  backdrop-filter: blur(2px); /* Iced-glass effect */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Matches layout container */
+  flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.footer-content p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--text-highlight); /* Accent color for hover state */
+}

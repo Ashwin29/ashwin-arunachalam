@@ -1,0 +1,117 @@
+.cloud2 {
+  position: absolute;
+  padding: 10px;
+  animation: animateCloud linear infinite;
+  opacity: 0; /* Default to hidden for animation */
+  transition: opacity 1s ease-in-out;
+}
+
+/* Cloud animation */
+@keyframes animateCloud {
+  from {
+    transform: translateX(-10%);
+  }
+  to {
+    transform: translateX(110%);
+  }
+}
+
+/* Smooth appearance & disappearance */
+.clouds-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.base2 {
+  position: relative;
+  top: 500px;
+  width: 450px;
+  height: 20px;
+  background: #ddd4d0;
+  border-radius: 100px;
+  background: linear-gradient(#fff, #ddd4d0 40%);
+}
+
+.base2half {
+  position: absolute;
+  top: -13px;
+  right: 6px;
+  width: 400px;
+  height: 30px;
+  background: #ddd4d0;
+  border-radius: 50% 50% 50% 50%;
+  background: linear-gradient(#fff, #ddd4d0 50%);
+}
+
+.three {
+  content: '';
+  position: absolute;
+  top: -110px;
+  left: 110px;
+  width: 120px;
+  height: 120px;
+  background: #ddd4d0;
+  border-radius: 200% 200% 0% 200%;
+
+  background: radial-gradient(90% 90% at bottom right, #ddd4d0 110%, #fff 130%);
+
+  /* box-shadow: 100px -30px 0 30px #fff; */
+}
+
+.four {
+  content: '';
+  position: absolute;
+  top: -250px;
+  left: 180px;
+  width: 170px;
+  height: 255px;
+  background: #ddd4d0;
+  border-radius: 50% 50% 0% 0%;
+
+  background: radial-gradient(70% 100% at bottom, #ddd4d0 90%, #fff 100%);
+}
+
+.five {
+  content: '';
+  position: absolute;
+  top: -180px;
+  left: 310px;
+  width: 120px;
+  height: 200px;
+  background: #ddd4d0;
+  border-radius: 90% 100% 100% 100%;
+  transform: rotate(20deg);
+  /* background: radial-gradient(75% 110% at bottom, #ddd4d0 85%, #fff 90%); */
+}
+
+.six {
+  content: '';
+  position: absolute;
+  top: -180px;
+  left: 180px;
+  width: 160px;
+  height: 160px;
+  background: #ddd4d0;
+  border-radius: 50%;
+  background: radial-gradient(95% 85% at bottom right, #ddd4d0 120%, #fff 130%);
+  /* box-shadow: 100px -30px 0 30px #fff;  */
+}
+
+.seven {
+  content: '';
+  position: absolute;
+  top: -115px;
+  left: 240px;
+  width: 100px;
+  height: 100px;
+  background: #ddd4d0;
+  border-radius: 50%;
+  background: radial-gradient(
+    110% 90% at bottom right,
+    #ddd4d0 100%,
+    #fff 130%
+  );
+  /* box-shadow: 100px -30px 0 30px #fff; */
+}

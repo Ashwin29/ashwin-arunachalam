@@ -1,0 +1,25 @@
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    var(--grid-columns),
+    1fr
+  ); /* Dynamically set columns */
+  gap: var(--grid-gap); /* Space between grid items */
+  width: 100%;
+  margin: 0 auto; /* Centers the grid */
+  padding: 1rem; /* Optional padding for grid container */
+  box-sizing: border-box;
+
+  /* Responsive Adjustments */
+  @media (max-width: 1280px) {
+    grid-template-columns: repeat(3, 1fr); /* Adjust to 3 columns */
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns */
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; /* Single column for smaller screens */
+  }
+}

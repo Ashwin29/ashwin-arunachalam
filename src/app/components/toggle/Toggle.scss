@@ -1,0 +1,93 @@
+.toggle-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Scalable sizes */
+  &.toggle-small {
+    width: 40px;
+    height: 20px;
+  }
+
+  &.toggle-medium {
+    width: 50px;
+    height: 24px;
+  }
+
+  &.toggle-large {
+    width: 60px;
+    height: 30px;
+  }
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  background-color: var(--backgrounds-muted);
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease;
+
+  &.toggle-on {
+    background-color: var(--accent);
+    justify-content: flex-end;
+  }
+
+  &:hover {
+    background-color: var(--hover);
+  }
+
+  &:focus {
+    outline: 2px solid var(--shared-focus);
+  }
+}
+
+.toggle-thumb {
+  position: absolute;
+  width: calc(50% - 4px); /* Dynamically scales thumb size */
+  height: calc(100% - 8px);
+  background-color: var(--primary);
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease,
+    box-shadow 0.2s ease;
+  transform: translateX(4px); /* Default position for the thumb */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  .toggle-on & {
+    transform: translateX(
+      calc(100% - 50% - 4px)
+    ); /* Corrects thumb positioning */
+    background-color: var(--text-highlight);
+  }
+
+  &:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Slight scaling effect */
+  }
+}
+
+/* Small toggle adjustments */
+.toggle-small .toggle-thumb {
+  width: calc(50% - 3px);
+  height: calc(100% - 6px);
+  transform: translateX(3px);
+
+  .toggle-on & {
+    transform: translateX(calc(100% - 50% - 3px));
+  }
+}
+
+/* Large toggle adjustments */
+.toggle-large .toggle-thumb {
+  width: calc(50% - 5px);
+  height: calc(100% - 10px);
+  transform: translateX(5px);
+
+  .toggle-on & {
+    transform: translateX(calc(100% - 50% - 5px));
+  }
+}

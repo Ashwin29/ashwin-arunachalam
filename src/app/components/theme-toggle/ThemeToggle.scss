@@ -1,0 +1,61 @@
+/* Toggle Container */
+.toggle-container {
+  width: 60px;
+  height: 30px;
+  border-radius: 50px;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+
+/* Toggle Border */
+.toggle-border {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  transition: background 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+/* Light Mode */
+.light {
+  background: var(--background-light);
+  box-shadow: inset 5px 5px 10px rgba(255, 255, 255, 0.2),
+    inset -5px -5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode */
+.dark {
+  background: var(--background-dark);
+  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Toggle Button */
+.toggle {
+  width: 26px;
+  height: 26px;
+  background: var(--toggle);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease-in-out, background 0.4s ease-in-out;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3),
+    -2px -2px 4px rgba(255, 255, 255, 0.2);
+}
+
+/* Rolling Animation */
+.rolled {
+  transform: translateX(30px);
+}
+
+/* Toggle Icon */
+.toggle-icon {
+  color: var(--text-primary);
+  transition: color 0.4s ease-in-out;
+}
