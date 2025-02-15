@@ -33,11 +33,10 @@ const Card: React.FC<CardProps> = ({
         </Typography>
         {actionLabel && (
           <Button
+            text={actionLabel}
             variant='primary' // Default button style for the card
             onClick={onActionClick}
-          >
-            {actionLabel}
-          </Button>
+          />
         )}
       </div>
     </div>

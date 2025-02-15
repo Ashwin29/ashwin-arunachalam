@@ -11,9 +11,10 @@ const Error: React.FC = () => {
           We can’t find the page you’re looking for. It might have been moved or
           doesn’t exist.
         </p>
-        <Button onClick={() => (window.location.href = '/')}>
-          Go Back to Home
-        </Button>
+        <Button
+          text='Go Back to Home'
+          onClick={() => (window.location.href = '/')}
+        />
       </div>
     </section>
   );

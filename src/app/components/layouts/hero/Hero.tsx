@@ -53,7 +53,7 @@ const Hero: React.FC = () => {
         <div className='hero-buttons slide-up'>
           <Button
             text="Let's Connect"
-            onClick={() => alert('CTA Clicked!')}
+            link='https://www.linkedin.com/in/ashwin-arunachalam/'
             variant='primary'
           />
           <Button

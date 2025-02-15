@@ -5,11 +5,17 @@ import './Button.scss';
 
 interface IButton {
   text: string;
-  onClick: () => void;
+  onClick?: () => void;
   variant?: 'primary' | 'secondary' | 'ghost';
+  link?: string;
 }
 
-const Button: React.FC<IButton> = ({ text, onClick, variant = 'primary' }) => {
+const Button: React.FC<IButton> = ({
+  text,
+  onClick,
+  variant = 'primary',
+  link,
+}) => {
   const [isPressed, setIsPressed] = useState(false);
 
   const handlePress = () => {
@@ -18,13 +24,19 @@ const Button: React.FC<IButton> = ({ text, onClick, variant = 'primary' }) => {
     }
     setIsPressed(true);
     setTimeout(() => setIsPressed(false), 150);
-    onClick();
+    if (onClick) {
+      onClick();
+    }
+  };
+
+  const handleOpenLink = () => {
+    window.open(link, '_blank', 'noopener,noreferrer');
   };
 
   return (
     <button
       className={`button ${variant} ${isPressed ? 'pressed' : ''}`}
-      onClick={handlePress}
+      onClick={link ? handleOpenLink : handlePress}
       onKeyDown={(e) =>
         e.key === 'Enter' || e.key === ' ' ? handlePress() : null
       }
