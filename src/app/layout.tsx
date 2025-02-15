@@ -9,7 +9,6 @@ import { Header } from './components/layouts/header/Header';
 import { Footer } from './components/layouts/footer/Footer';
 import AppLayout from './components/layouts/AppLayout';
 import { ThemeProvider } from './components/theme-provider/ThemeProvider';
-import AppLoader from './components/app-loader/AppLoader';
 
 // const metadata: Metadata = {
 //   title: 'Ashwin Arunachalam',
@@ -31,8 +30,7 @@ export default function RootLayout({
       </head>
       <body className={`antialiased`}>
         <ThemeProvider>
-          <AppLoader />
-          {typeof window !== 'undefined' && <Background />}
+          <Background />
 
           <Header />
 
