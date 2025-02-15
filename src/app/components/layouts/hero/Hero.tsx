@@ -4,7 +4,7 @@ import React from 'react';
 import './Hero.scss';
 import { Typography } from '../../typography/Typography';
 import { TypewriterText } from '../../typewriter-text/TypewriterText';
-import { CTA } from '../../cta/CTA';
+import { Button } from '../../foundation/button/Button';
 
 const Hero: React.FC = () => {
   return (
@@ -51,12 +51,12 @@ const Hero: React.FC = () => {
           Engineering software that drives revenue and growth.
         </Typography>
         <div className='hero-buttons slide-up'>
-          <CTA
+          <Button
             text="Let's Connect"
             onClick={() => alert('CTA Clicked!')}
             variant='primary'
           />
-          <CTA
+          <Button
             text='View Portfolio'
             onClick={() => alert('Portfolio Opened')}
             variant='ghost'

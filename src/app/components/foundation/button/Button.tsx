@@ -1,28 +1,36 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import './Button.scss';
 
-interface ButtonProps {
-  variant?: 'primary' | 'secondary' | 'outlined'; // Button types
-  children: React.ReactNode;
-  onClick?: () => void;
-  disabled?: boolean;
+interface IButton {
+  text: string;
+  onClick: () => void;
+  variant?: 'primary' | 'secondary' | 'ghost';
 }
 
-const Button: React.FC<ButtonProps> = ({
-  variant = 'primary',
-  children,
-  onClick,
-  disabled = false,
-}) => {
+const Button: React.FC<IButton> = ({ text, onClick, variant = 'primary' }) => {
+  const [isPressed, setIsPressed] = useState(false);
+
+  const handlePress = () => {
+    if ('vibrate' in navigator) {
+      navigator.vibrate([30]); // Haptic feedback
+    }
+    setIsPressed(true);
+    setTimeout(() => setIsPressed(false), 150);
+    onClick();
+  };
+
   return (
     <button
-      className={`button button-${variant}`}
-      onClick={onClick}
-      disabled={disabled}
+      className={`button ${variant} ${isPressed ? 'pressed' : ''}`}
+      onClick={handlePress}
+      onKeyDown={(e) =>
+        e.key === 'Enter' || e.key === ' ' ? handlePress() : null
+      }
+      aria-label={text}
     >
-      {children}
+      {text}
     </button>
   );
 };

@@ -1,88 +1,69 @@
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem; /* Maintain spacing */
+  flex-wrap: wrap; /* Ensures proper responsiveness */
+  width: 100%; /* Ensures it doesn't get affected by text expansion */
+  max-width: 400px; /* Prevents excessive width */
+  margin: 0 auto; /* Center it */
+}
+
 .button {
-  font-family: 'Inter', sans-serif;
+  font-size: 1rem; /* Adjusted for better readability */
   font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 8px;
+  padding: 10px 18px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
-  display: inline-block;
-  position: relative;
+  transition: transform 0.1s ease, background-color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+  outline: none;
+  display: flex; /* Ensures proper alignment */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  user-select: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  min-width: 160px; /* Prevents shrinking */
+  max-width: 200px; /* Restricts growth */
+  flex-shrink: 0; /* Ensures it stays the same size */
+  margin: 0 auto; /* Center horizontally */
 
-  /* Primary Button Styles */
-  &.button-primary {
-    background-color: var(--primary);
-    color: var(--text-primary);
-    border: none;
-    box-shadow: 0px 4px 6px var(--shared-shadow);
+  /* Uses dynamic variables from applyTheme */
+  background: var(--primary);
+  color: var(--text-primary);
+  border: none;
 
-    &:hover {
-      background-color: var(--hover);
-    }
-
-    &:focus {
-      outline: 2px solid var(--shared-focus);
-      outline-offset: 2px;
-    }
-
-    &:disabled {
-      background-color: var(--shared-disabled);
-      color: var(--text-muted);
-      cursor: not-allowed;
-      box-shadow: none;
-    }
-  }
-
-  /* Secondary Button Styles */
-  &.button-secondary {
-    background-color: var(--secondary);
+  &.secondary {
+    background: transparent;
+    border: 2px solid var(--text-secondary);
     color: var(--text-secondary);
-    border: none;
-    box-shadow: 0px 2px 4px var(--shared-shadow);
-
-    &:hover {
-      background-color: var(--hover);
-    }
-
-    &:focus {
-      outline: 2px solid var(--shared-focus);
-      outline-offset: 2px;
-    }
-
-    &:disabled {
-      background-color: var(--shared-disabled);
-      color: var(--text-muted);
-      cursor: not-allowed;
-      box-shadow: none;
-    }
   }
 
-  /* Outlined Button Styles */
-  &.button-outlined {
-    background-color: transparent;
-    color: var(--accent);
-    border: 2px solid var(--accent);
-
-    &:hover {
-      background-color: var(--hover);
-      color: var(--text-primary);
-    }
-
-    &:focus {
-      outline: 2px solid var(--shared-focus);
-      outline-offset: 2px;
-    }
-
-    &:disabled {
-      border-color: var(--shared-disabled);
-      color: var(--text-muted);
-      cursor: not-allowed;
-      box-shadow: none;
-    }
+  &.ghost {
+    background: none;
+    border-bottom: 2px solid var(--text-primary);
+    color: var(--text-primary);
   }
 
-  /* Add subtle glow for focus states in dark mode */
-  &:focus-visible {
-    box-shadow: 0px 0px 10px 2px var(--shared-focus);
+  @media (max-width: 768px) {
+    width: 80%; /* Reduce further for mobile */
+    max-width: 180px;
+    padding: 8px 16px;
   }
+}
+
+.button:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.button:active,
+.pressed {
+  transform: scale(0.95);
+}
+
+/* Accessibility Focus */
+.button:focus {
+  outline: 3px solid rgba(135, 178, 255, 0.8);
+  outline-offset: 3px;
 }
