@@ -1,5 +1,3 @@
-'use client';
-
 import './globals.css';
 import '@fontsource/poppins';
 import '@fontsource/inter';
@@ -9,11 +7,43 @@ import { Header } from './components/layouts/header/Header';
 import { Footer } from './components/layouts/footer/Footer';
 import AppLayout from './components/layouts/AppLayout';
 import { ThemeProvider } from './components/theme-provider/ThemeProvider';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
-// const metadata: Metadata = {
-//   title: 'Ashwin Arunachalam',
-//   description: 'Portfolio of Ashwin Arunachalam',
-// };
+export const metadata = {
+  title: 'Ashwin Arunachalam',
+  description:
+    'Discover how Ashwin Arunachalam, a results-driven software engineer with a passion for business development, drives impactful solutions at scale through cutting-edge technology and strategic innovation.',
+  keywords:
+    'Ashwin Arunachalam, Software Engineer, Business Development, Technology Leader, Scalable Solutions, Engineering at Scale, Tech Strategy, Software Projects, Innovation, Portfolio',
+  authors: [{ name: 'Ashwin Arunachalam' }],
+  applicationName: 'Ashwin Arunachalam',
+  robots: 'index, follow',
+  openGraph: {
+    title: 'Ashwin Arunachalam',
+    description:
+      'Discover how Ashwin Arunachalam, a results-driven software engineer with a passion for business development, drives impactful solutions at scale through cutting-edge technology and strategic innovation.',
+    url: 'https://ashwin-arunachalam.com',
+    siteName: 'Ashwin Arunachalam',
+    images: [
+      {
+        url: 'https://ashwin-arunachalam.com/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Ashwin Arunachalam Portfolio',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ashwin Arunachalam',
+    description:
+      'Discover how Ashwin Arunachalam, a results-driven software engineer with a passion for business development, drives impactful solutions at scale through cutting-edge technology and strategic innovation.',
+    images: ['https://ashwin-arunachalam.com/og-image.png'],
+    creator: '@aashhwiin',
+  },
+};
 
 export default function RootLayout({
   children,
@@ -38,6 +68,8 @@ export default function RootLayout({
 
           <Footer />
         </ThemeProvider>
+
+        <SpeedInsights />
       </body>
     </html>
   );

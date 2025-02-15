@@ -3,20 +3,19 @@
 import React, { useEffect } from 'react';
 import './Sun.scss';
 import { useTheme } from '../../theme-provider/ThemeProvider';
-import { useSafeDocument } from '@/app/utils/useSafeDocument';
 
 const Sun: React.FC = () => {
   const { theme } = useTheme();
-  const doc = useSafeDocument();
+
   // const [offset, setOffset] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    if (doc) {
+    if (document) {
       // Set sun to always be positioned at the top right
-      doc.documentElement.style.setProperty('--sun-top', '10%'); // Fixed at 10% from top
-      doc.documentElement.style.setProperty('--sun-left', '85%'); // Fixed at 85% from left
+      document.documentElement.style.setProperty('--sun-top', '10%'); // Fixed at 10% from top
+      document.documentElement.style.setProperty('--sun-left', '85%'); // Fixed at 85% from left
     }
-  }, [theme, doc]);
+  }, [theme]);
 
   // useEffect(() => {
   //   const handleParallax = (e: MouseEvent) => {
