@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import './Stars.scss';
-import useGyroscope from '@/app/utils/useGyroscope';
 
 const TOTAL_STARS = 200; // Density of stars
 
@@ -10,8 +9,6 @@ const Stars: React.FC = () => {
   const starContainerRef = useRef<HTMLDivElement | null>(null);
   const animationFrameRef = useRef<number | null>(null);
   const offsetRef = useRef({ x: 0, y: 0 });
-
-  const gyroscopeOffset = useGyroscope();
 
   // Generate Stars (Once, Avoid Remounts)
   const generateStars = () => {
@@ -49,25 +46,23 @@ const Stars: React.FC = () => {
   };
 
   // Apply Parallax Effect to Stars (Runs Continuously)
-  const applyParallax = () => {
+  const applyParallax = useCallback(() => {
     if (!starContainerRef.current) return;
 
     const stars = starContainerRef.current.querySelectorAll('.star');
     const { x, y } = offsetRef.current;
-    const gyroX = gyroscopeOffset.x;
-    const gyroY = gyroscopeOffset.y;
 
     stars.forEach((star) => {
       const speed = parseFloat(star.getAttribute('data-speed') || '1');
-      const moveX = (x + gyroX) * speed * 20;
-      const moveY = (y + gyroY) * speed * 20;
+      const moveX = x * speed * 20;
+      const moveY = y * speed * 20;
       (
         star as HTMLElement
       ).style.transform = `translate(${moveX}px, ${moveY}px)`;
     });
 
     animationFrameRef.current = requestAnimationFrame(applyParallax);
-  };
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -82,7 +77,7 @@ const Stars: React.FC = () => {
       if (animationFrameRef.current)
         cancelAnimationFrame(animationFrameRef.current);
     };
-  }, []);
+  }, [applyParallax]);
 
   return (
     <div className='stars' ref={starContainerRef}>

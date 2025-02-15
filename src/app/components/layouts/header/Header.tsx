@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Header.scss';
 import { Lobster } from 'next/font/google';
 import Link from 'next/link';
@@ -11,12 +11,6 @@ const lobster = Lobster({
 });
 
 const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
-
   return (
     <header className='header'>
       <div className={`logo ${lobster.className}`}>

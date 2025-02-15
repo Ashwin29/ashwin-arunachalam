@@ -1,5 +1,7 @@
+'use client';
+
+import { createContext, useContext, useEffect, useState } from 'react';
 import { applyTheme } from '@/app/utils/apply-theme';
-import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface ThemeContextProps {
   theme: 'light' | 'dark';
@@ -8,30 +10,32 @@ interface ThemeContextProps {
 
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
-export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const [mounted, setMounted] = useState(false);
 
+  // Fix hydration issue: Wait for client-side mount
   useEffect(() => {
-    applyTheme('light');
+    const storedTheme =
+      (localStorage.getItem('theme') as 'light' | 'dark') || 'dark';
+    setTheme(storedTheme);
+    applyTheme(storedTheme);
+    document.documentElement.classList.toggle('dark', storedTheme === 'dark');
+    setMounted(true);
   }, []);
 
   const toggleTheme = () => {
-    const currentTheme = theme === 'light' ? 'dark' : 'light';
-
-    setTheme(currentTheme);
-
-    applyTheme(currentTheme); // Apply theme dynamically
-
-    localStorage.setItem('theme', currentTheme); // Persist theme preference
-
-    if (theme === 'light') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    applyTheme(newTheme);
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
   };
+
+  // Prevent server-render mismatch
+  if (!mounted) {
+    return <div suppressHydrationWarning>Loading...</div>;
+  }
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

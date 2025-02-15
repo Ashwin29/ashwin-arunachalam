@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './Background.scss';
 import { Sun } from './sun/Sun';
 import { Moon } from './moon/Moon';
 import { Clouds } from './clouds/Clouds';
 import { Stars } from './stars/Stars';
-import { useTheme } from '../theme-provider/ThemeProvider';
+import { useSafeDocument } from '@/app/utils/useSafeDocument';
 
 const Background: React.FC = () => {
-  const { theme } = useTheme();
-  const [fade, setFade] = useState(false);
-
-  useEffect(() => {
-    setFade(true);
-    const timeout = setTimeout(() => setFade(false), 1000); // Adjust timing
-    return () => clearTimeout(timeout);
-  }, [theme]);
+  const doc = useSafeDocument();
+  if (!doc) return;
 
   return ReactDOM.createPortal(
-    <div className={`background-container ${fade ? 'fade-out' : ''}`}>
+    <div className='background-container'>
       {/* Gradient Transition Layer */}
       <div className='background-overlay'></div>
 

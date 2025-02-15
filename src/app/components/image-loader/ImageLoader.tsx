@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import './ImageLoader.scss';
+import Image from 'next/image';
 
 interface IImageLoader {
   src?: string;
@@ -35,7 +36,7 @@ const ImageLoader: React.FC<IImageLoader> = ({
         </div>
       )}
       {!hasError && (
-        <img
+        <Image
           src={src}
           alt={alt}
           className={`image ${isLoading ? 'hidden' : ''}`}

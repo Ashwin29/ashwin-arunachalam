@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import './CTA.scss';
-import { useHapticFeedback } from '@/app/utils/useHapticFeedback';
 
 interface CTAProps {
   text: string;
@@ -12,7 +11,6 @@ interface CTAProps {
 
 const CTA: React.FC<CTAProps> = ({ text, onClick, variant = 'primary' }) => {
   const [isPressed, setIsPressed] = useState(false);
-  const triggerHaptic = useHapticFeedback();
 
   const handlePress = () => {
     if ('vibrate' in navigator) {
@@ -21,7 +19,6 @@ const CTA: React.FC<CTAProps> = ({ text, onClick, variant = 'primary' }) => {
     setIsPressed(true);
     setTimeout(() => setIsPressed(false), 150);
     onClick();
-    triggerHaptic({ intensity: 'medium' });
   };
 
   return (

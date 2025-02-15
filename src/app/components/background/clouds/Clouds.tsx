@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import './Clouds.scss';
-import useGyroscope from '@/app/utils/useGyroscope';
 
 interface CloudProps {
   id: number;
@@ -58,7 +57,6 @@ const generateRandomClouds = (
 const Clouds: React.FC = () => {
   const [clouds, setClouds] = useState<CloudProps[]>([]);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
-  const gyroscopeOffset = useGyroscope();
 
   useEffect(() => {
     const screenWidth = window.innerWidth;
@@ -106,8 +104,8 @@ const Clouds: React.FC = () => {
   }, []);
 
   const combinedOffset = {
-    x: offset.x + gyroscopeOffset.x,
-    y: offset.y + gyroscopeOffset.y,
+    x: offset.x,
+    y: offset.y,
   };
 
   return (

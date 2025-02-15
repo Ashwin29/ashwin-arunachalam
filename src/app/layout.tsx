@@ -1,6 +1,5 @@
 'use client';
 
-import type { Metadata } from 'next';
 import './globals.css';
 import '@fontsource/poppins';
 import '@fontsource/inter';
@@ -10,11 +9,12 @@ import { Header } from './components/layouts/header/Header';
 import { Footer } from './components/layouts/footer/Footer';
 import AppLayout from './components/layouts/AppLayout';
 import { ThemeProvider } from './components/theme-provider/ThemeProvider';
+import AppLoader from './components/app-loader/AppLoader';
 
-const metadata: Metadata = {
-  title: 'Ashwin Arunachalam',
-  description: 'Portfolio of Ashwin Arunachalam',
-};
+// const metadata: Metadata = {
+//   title: 'Ashwin Arunachalam',
+//   description: 'Portfolio of Ashwin Arunachalam',
+// };
 
 export default function RootLayout({
   children,
@@ -29,17 +29,18 @@ export default function RootLayout({
           rel='stylesheet'
         />
       </head>
-      <ThemeProvider>
-        <body className={`antialiased`}>
-          <Background />
+      <body className={`antialiased`}>
+        <ThemeProvider>
+          <AppLoader />
+          {typeof window !== 'undefined' && <Background />}
 
           <Header />
 
           <AppLayout>{children}</AppLayout>
 
           <Footer />
-        </body>
-      </ThemeProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
