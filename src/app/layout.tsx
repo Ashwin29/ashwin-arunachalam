@@ -8,6 +8,7 @@ import { Footer } from './components/layouts/footer/Footer';
 import AppLayout from './components/layouts/AppLayout';
 import { ThemeProvider } from './components/theme-provider/ThemeProvider';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata = {
   title: 'Ashwin Arunachalam',
@@ -69,6 +70,7 @@ export default function RootLayout({
           <Footer />
         </ThemeProvider>
 
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
