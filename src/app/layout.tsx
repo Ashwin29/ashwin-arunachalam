@@ -59,21 +59,20 @@ export default function RootLayout({
           rel='stylesheet'
         />
 
-        {/* Favicon */}
         <link
           rel='icon'
-          type='image/png'
-          href='/favicon-light.png'
+          type='image/svg+xml'
+          href='/assets/icon.svg'
           media='(prefers-color-scheme: light)'
         />
+
         <link
           rel='icon'
-          type='image/png'
-          href='/favicon-dark.png'
+          type='image/svg+xml'
+          href='/assets/icon.svg'
           media='(prefers-color-scheme: dark)'
         />
 
-        {/* Safari iOS Toolbar Accent */}
         <meta
           name='theme-color'
           content='#F9F9F9'
