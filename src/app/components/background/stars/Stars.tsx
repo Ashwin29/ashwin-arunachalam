@@ -3,14 +3,14 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import './Stars.scss';
 
-const TOTAL_STARS = 200; // Density of stars
+const TOTAL_STARS = 200; // Number of stars
 
 const Stars: React.FC = () => {
   const starContainerRef = useRef<HTMLDivElement | null>(null);
   const animationFrameRef = useRef<number | null>(null);
-  const offsetRef = useRef({ x: 0, y: 0 });
+  const offsetRef = useRef({ x: 0, y: 0, scrollY: 0 });
 
-  // Generate Stars (Once, Avoid Remounts)
+  // Generate stars once to prevent unnecessary re-renders
   const generateStars = () => {
     return Array.from({ length: TOTAL_STARS }).map((_, index) => {
       const size = Math.random() * 2 + 1;
@@ -36,26 +36,32 @@ const Stars: React.FC = () => {
     });
   };
 
-  // Parallax Update Function (Runs on Mouse Move)
+  // Parallax Update Function (Desktop Mouse Move)
   const updateParallax = (event: MouseEvent) => {
     if (!starContainerRef.current) return;
-
     const { innerWidth, innerHeight } = window;
     offsetRef.current.x = (event.clientX / innerWidth - 0.5) * 2;
     offsetRef.current.y = (event.clientY / innerHeight - 0.5) * 2;
   };
 
-  // Apply Parallax Effect to Stars (Runs Continuously)
+  // Parallax Effect (Mobile Scroll-Based)
+  const updateScrollParallax = () => {
+    if (!starContainerRef.current) return;
+    offsetRef.current.scrollY = window.scrollY * 0.1; // Smooth scrolling effect
+  };
+
+  // Apply parallax effect continuously at 60/120fps
   const applyParallax = useCallback(() => {
     if (!starContainerRef.current) return;
 
     const stars = starContainerRef.current.querySelectorAll('.star');
-    const { x, y } = offsetRef.current;
+    const { x, y, scrollY } = offsetRef.current;
 
     stars.forEach((star) => {
       const speed = parseFloat(star.getAttribute('data-speed') || '1');
       const moveX = x * speed * 20;
-      const moveY = y * speed * 20;
+      const moveY = y * speed * 20 + scrollY * speed * 0.5; // Scroll movement
+
       (
         star as HTMLElement
       ).style.transform = `translate(${moveX}px, ${moveY}px)`;
@@ -65,15 +71,16 @@ const Stars: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      updateParallax(event);
-    };
+    const handleMouseMove = (event: MouseEvent) => updateParallax(event);
+    const handleScroll = () => updateScrollParallax();
 
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll);
     animationFrameRef.current = requestAnimationFrame(applyParallax);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
       if (animationFrameRef.current)
         cancelAnimationFrame(animationFrameRef.current);
     };

@@ -7,17 +7,19 @@
   z-index: 0;
 }
 
+/* Star Elements */
 .star {
   position: absolute;
   background: white;
   border-radius: 50%;
   opacity: 0.8;
-  animation: twinkle 10s ease-in-out infinite, sparkle 15s infinite;
+  animation: twinkle 10s ease-in-out infinite,
+    float 20s infinite linear alternate;
   transform: translate3d(0, 0, 0);
   will-change: transform;
 }
 
-/* Parallax Keyframes */
+/* Twinkle Effect */
 @keyframes twinkle {
   0% {
     opacity: 0.8;
@@ -33,25 +35,17 @@
   }
 }
 
-@keyframes sparkle {
-  0%,
-  90% {
-    box-shadow: none;
-    transform: scale(1);
+/* Floating Animation (Subtle Movement) */
+@keyframes float {
+  0% {
+    transform: translateY(0);
   }
-  91%,
-  94% {
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
-    transform: scale(1.4);
-  }
-  95%,
   100% {
-    box-shadow: none;
-    transform: scale(1);
+    transform: translateY(5px);
   }
 }
 
-/* Responsive Scaling */
+/* Responsive Adjustments */
 @media (max-width: 640px) {
   .star {
     width: 1.5px;
