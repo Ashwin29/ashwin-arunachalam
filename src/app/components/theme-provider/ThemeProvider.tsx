@@ -11,31 +11,30 @@ interface ThemeContextProps {
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
-  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem('theme') as 'light' | 'dark') || 'dark';
+    }
+    return 'dark';
+  });
 
   // Fix hydration issue: Wait for client-side mount
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
-    const storedTheme =
-      (localStorage.getItem('theme') as 'light' | 'dark') || 'dark';
-    setTheme(storedTheme);
-    applyTheme(storedTheme);
-    document.documentElement.classList.toggle('dark', storedTheme === 'dark');
+    applyTheme(theme);
     setMounted(true);
-  }, []);
+  }, [theme]);
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     applyTheme(newTheme);
-    document.documentElement.classList.toggle('dark', newTheme === 'dark');
   };
 
   // Prevent server-render mismatch
-  if (!mounted) {
-    return <div suppressHydrationWarning>Loading...</div>;
-  }
+  if (!mounted) return <></>;
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

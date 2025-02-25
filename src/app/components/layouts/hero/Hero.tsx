@@ -5,6 +5,7 @@ import './Hero.scss';
 import { Typography } from '../../typography/Typography';
 import { TypewriterText } from '../../typewriter-text/TypewriterText';
 import { Button } from '../../foundation/button/Button';
+import { AboutModal } from '../../modal/components/about/About';
 
 const Hero: React.FC = () => {
   return (
@@ -30,12 +31,13 @@ const Hero: React.FC = () => {
         >
           <TypewriterText
             texts={[
-              "I'm Ashwin Arunachalam",
-              'I build scalable apps that increases revenue by 10x',
-              'The apps I built have 2-5 million daily active users',
-              'I optimize platforms for speed, scale, and impact',
-              'I craft experiences that maximize conversions',
-              'I engineer solutions that power growth at scale',
+              'I’m Ashwin Arunachalam',
+              'I build scalable apps that drive exponential growth.',
+              'My applications power businesses, increasing revenue by 10x.',
+              'The products I’ve built serve 2-5 million daily active users seamlessly.',
+              'I engineer platforms optimized for speed, scale, and real-world impact.',
+              'I create digital experiences designed to maximize conversions and engagement.',
+              'I architect solutions that drive sustained business growth at scale.',
             ]}
             speed={100}
             delay={2000}
@@ -48,17 +50,13 @@ const Hero: React.FC = () => {
           className='hero-tagline fade-in'
           id='hero-description'
         >
-          Engineering software that drives revenue and growth.
+          Transforming technology into revenue-generating powerhouses.
         </Typography>
         <div className='hero-buttons slide-up'>
+          <AboutModal />
           <Button
             text="Let's Connect"
             link='https://www.linkedin.com/in/ashwin-arunachalam/'
-            variant='primary'
-          />
-          <Button
-            text='View Portfolio'
-            onClick={() => alert('Portfolio Opened')}
             variant='ghost'
           />
         </div>

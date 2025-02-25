@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
         </Typography>
         <nav className='footer-links'>
           <a
-            href='https://github.com'
+            href='https://github.com/Ashwin29/ashwin-arunachalam'
             target='_blank'
             rel='noopener noreferrer'
           >

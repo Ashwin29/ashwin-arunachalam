@@ -8,6 +8,7 @@ interface IButton {
   onClick?: () => void;
   variant?: 'primary' | 'secondary' | 'ghost';
   link?: string;
+  className?: string;
 }
 
 const Button: React.FC<IButton> = ({
@@ -15,6 +16,7 @@ const Button: React.FC<IButton> = ({
   onClick,
   variant = 'primary',
   link,
+  className,
 }) => {
   const [isPressed, setIsPressed] = useState(false);
 
@@ -35,7 +37,7 @@ const Button: React.FC<IButton> = ({
 
   return (
     <button
-      className={`button ${variant} ${isPressed ? 'pressed' : ''}`}
+      className={`button ${variant} ${isPressed ? 'pressed' : ''} ${className}`}
       onClick={link ? handleOpenLink : handlePress}
       onKeyDown={(e) =>
         e.key === 'Enter' || e.key === ' ' ? handlePress() : null

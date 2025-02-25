@@ -14,7 +14,7 @@ const Header: React.FC = () => {
   return (
     <header className='header'>
       <div className={`logo ${lobster.className}`}>
-        <Link href='/home'>Ashwin Arunachalam</Link>
+        <Link href='/'>Ashwin Arunachalam</Link>
       </div>
 
       <ThemeToggle />
