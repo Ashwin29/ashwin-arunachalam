@@ -27,7 +27,7 @@ export const metadata = {
     siteName: 'Ashwin Arunachalam',
     images: [
       {
-        url: 'https://ashwin-arunachalam.com/og-image.png',
+        url: 'https://www.ashwin-arunachalam.com/assets/icon.svg',
         width: 1200,
         height: 630,
         alt: 'Ashwin Arunachalam Portfolio',
@@ -41,7 +41,7 @@ export const metadata = {
     title: 'Ashwin Arunachalam',
     description:
       'Discover how Ashwin Arunachalam, a results-driven software engineer with a passion for business development, drives impactful solutions at scale through cutting-edge technology and strategic innovation.',
-    images: ['https://ashwin-arunachalam.com/og-image.png'],
+    images: ['https://www.ashwin-arunachalam.com/assets/icon.svg'],
     creator: '@aashhwiin',
   },
 };
