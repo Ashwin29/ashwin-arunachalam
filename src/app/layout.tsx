@@ -58,6 +58,32 @@ export default function RootLayout({
           href='https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@400;700&family=Source+Sans+Pro:wght@600&display=swap'
           rel='stylesheet'
         />
+
+        {/* Favicon */}
+        <link
+          rel='icon'
+          type='image/png'
+          href='/favicon-light.png'
+          media='(prefers-color-scheme: light)'
+        />
+        <link
+          rel='icon'
+          type='image/png'
+          href='/favicon-dark.png'
+          media='(prefers-color-scheme: dark)'
+        />
+
+        {/* Safari iOS Toolbar Accent */}
+        <meta
+          name='theme-color'
+          content='#F9F9F9'
+          media='(prefers-color-scheme: light)'
+        />
+        <meta
+          name='theme-color'
+          content='#121212'
+          media='(prefers-color-scheme: dark)'
+        />
       </head>
       <body className={`antialiased`}>
         <ThemeProvider>
