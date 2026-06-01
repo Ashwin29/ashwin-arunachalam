@@ -83,7 +83,7 @@ export function LoadingScreen({ onLoadComplete }: { onLoadComplete: () => void }
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
-          className='relative mb-12 px-4 sm:px-8'
+          className='relative mb-4 sm:mb-12 px-4 sm:px-8'
         >
           <motion.div
             animate={{
