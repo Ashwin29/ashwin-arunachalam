@@ -83,7 +83,7 @@ export function LoadingScreen({ onLoadComplete }: { onLoadComplete: () => void }
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
-          className='relative mb-12 px-8'
+          className='relative mb-12 px-4 sm:px-8'
         >
           <motion.div
             animate={{
@@ -103,7 +103,8 @@ export function LoadingScreen({ onLoadComplete }: { onLoadComplete: () => void }
               initial={{ clipPath: 'inset(0 100% 0 0)' }}
               animate={{ clipPath: 'inset(0 0% 0 0)' }}
               transition={{ duration: 2.2, ease: [0.25, 0.1, 0.25, 1] }}
-              className='text-6xl md:text-7xl lg:text-8xl bg-gradient-to-r from-white via-electric-blue to-soft-purple bg-clip-text text-transparent whitespace-nowrap font-signature'
+              style={{ fontSize: 'clamp(2rem, 9vw, 6rem)' }}
+              className='bg-gradient-to-r from-white via-electric-blue to-soft-purple bg-clip-text text-transparent whitespace-nowrap font-signature'
             >
               Ashwin Arunachalam
             </motion.div>
